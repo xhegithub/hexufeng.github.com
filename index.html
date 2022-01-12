@@ -29,7 +29,7 @@
 
         function go(dtStr, removeCurrentDate) {
             if(dtStr){
-                document.getElementById("currentDay").innerHTML = dtStr;
+                document.getElementById("currentDay").innerHTML = dtStr.replace('=', '');
                 document.title = "基督之家第五家QT讀經靈修 - " + dtStr;
                 document.getElementById("iframeTag").src = "https://hocdevotion.org/event/" + dtStr;
             }else{
