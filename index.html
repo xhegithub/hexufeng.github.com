@@ -5,9 +5,52 @@
             width: 100%;
             height: 100%;
         }
+        .dateNav{
+            font-size: 50px;
+            text-align: center;
+        }
+        .btn{
+            font-size: 50px;
+        }
     </style>
+    <script type="text/javascript">
+
+        var daysOffset = 0;
+
+        function prev() {
+            daysOffset--;
+            go();
+        }
+
+        function next() {
+            daysOffset++;
+            go();
+        }
+
+        function go() {
+            var current_time = new Date().getTime();
+            var dayMS = 24 * 60 * 60 * 1000;
+            var dt = new Date(current_time + daysOffset * dayMS);
+
+            var yyyy = dt.getFullYear();
+            var month = dt.getMonth() + 1;
+            var day = dt.getDate();
+            var dtStr = yyyy + '-' + month + "-" + day;
+
+            document.getElementById("currentDay").innerHTML = dtStr;
+            document.getElementById("iframeTag").src = "https://hocdevotion.org/event/" + dtStr;
+        }
+
+        setTimeout(()=>{ go(); });
+    </script>
 </head>
-    <body>
-        <iframe class="iframe" src="https://hocdevotion.org/event/2022-1-10/" frameborder="0">
-    </body>
+<body>
+<div class="dateNav">
+    <button onclick="prev()" class="btn">前一天</button>
+    <span id="currentDay"></span>
+    <button onclick="next()"  class="btn">后一天</button>
+
+</div>
+<iframe class="iframe" id="iframeTag" frameborder="0"/>
+</body>
 </html>
