@@ -41,7 +41,7 @@
                     var dt = new Date();
                     dt.setFullYear(parseInt(passedInDTParts[0].trim()));
                     dt.setMonth(parseInt(passedInDTParts[1].trim()) -1);
-                    dt.setDate(passedInDTParts[2]);
+                    dt.setDate(parseInt(passedInDTParts[2]));
                     current_time = dt.getTime();
                 }
                 var dayMS = 24 * 60 * 60 * 1000;
